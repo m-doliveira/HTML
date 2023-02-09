@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -16,6 +18,7 @@ public class HtmlRead {
     JLabel topLabel;
     JLabel midLabel;
     JLabel bottomLabel;
+    JButton submit;
 
     public static void main(String[] args) {
         HtmlRead html = new HtmlRead();
@@ -23,7 +26,7 @@ public class HtmlRead {
 
     public HtmlRead() {
         frame = new JFrame("link_search");
-        frame.setLayout(new GridLayout(6, 1));
+        frame.setLayout(new GridLayout(7, 1));
         frame.setSize(width, height);
         frame.setVisible(true);
         topLabel = new JLabel("input URL");
@@ -34,13 +37,22 @@ public class HtmlRead {
         bottomLabel = new JLabel("results");
         output = new JTextArea();
         output.setSize(w, h);
+        submit = new JButton("search");
+        submit.setActionCommand("search");
+        submit.addActionListener(new ButtonClickListener());
         frame.add(topLabel);
         frame.add(input);
         frame.add(midLabel);
         frame.add(term);
+        frame.add(submit);
         frame.add(bottomLabel);
         frame.add(output);
         frame.setVisible(true);
+
+
+    }
+
+    public void findlink() {
         try {
             System.out.println();
             System.out.print("hello \n");
@@ -51,13 +63,13 @@ public class HtmlRead {
             String line;
             while ((line = reader.readLine()) != null) {
                 //lines that have the letter x will be printed from index 50
-                // look into using .contains commands
-                if(line.contains("href")){
+                // look into using .split commands
+                if (line.contains("href")) {
                     System.out.println(line);
                 }
-               // if (line.indexOf("x", 50) != -1) {
-                   // System.out.println(line);
-               // }
+                // if (line.indexOf("x", 50) != -1) {
+                // System.out.println(line);
+                // }
             }
             reader.close();
         } catch (Exception ex) {
@@ -66,4 +78,19 @@ public class HtmlRead {
 
     }
 
+    public void actionPerformed(ActionEvent e) {
+        // if (e.getSource() == cut)
+        // ta.cut();
+    }
+
+    class ButtonClickListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+
+            if (command.equals("search")) {
+                findlink();
+            }
+
+        }
+    }
 }
