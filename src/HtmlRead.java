@@ -61,10 +61,22 @@ public class HtmlRead {
                     new InputStreamReader(url.openStream())
             );
             String line;
+             String s;
             while ((line = reader.readLine()) != null) {
                 //lines that have the letter x will be printed from index 50
                 // look into using .split commands
                 if (line.contains("href")) {
+                    s=line;
+                    char[] characters = s.toCharArray();
+                    String[] array =s.split(" ");
+                    StringBuilder builder = new StringBuilder();
+                    for(String s1: array){
+                    if(!("href".equals(s))){
+                    builder.append(s).append(" ");
+                      //  return builder.toString();
+                    }
+
+                    }
                     System.out.println(line);
                 }
                 // if (line.indexOf("x", 50) != -1) {
