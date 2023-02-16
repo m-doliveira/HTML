@@ -55,29 +55,21 @@ public class HtmlRead {
 
     public void findlink() {
         try {
-            System.out.println();
-            System.out.print("hello \n");
+            //System.out.println();
+            //System.out.print("hello \n");
             URL url = new URL("https://www.milton.edu/");
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(url.openStream())
             );
             String line;
-             String s;
-            while ((line = reader.readLine()) != null) {
-                //lines that have the letter x will be printed from index 50
-                // look into using .split commands
-                if (line.contains("href")) {
-                    String substring [] =line.split("href");
-                    System.out.println(Arrays.toString(substring));
-                    StringBuilder builder = new StringBuilder();
-                    for(String s1: substring){
-                    if(!("https//:".equals(substring))){
-                    builder.append(substring).append(" ");
-                      // return builder.toString();
-                    }
 
-                    }
-                    System.out.println(line);
+            while ((line = reader.readLine()) != null) {
+                // look into using .split commands
+                if (line.contains("href=\"")  && line.contains(term.getText())) {
+                    int start = line.indexOf("href=\"") +6;
+                    int end =line.indexOf(50);
+                    String link = line.substring(start,end);
+                   System.out.println(link);
                 }
                 // if (line.indexOf("x", 50) != -1) {
                 // System.out.println(line);
@@ -91,8 +83,7 @@ public class HtmlRead {
     }
 
     public void actionPerformed(ActionEvent e) {
-        // if (e.getSource() == cut)
-        // ta.cut();
+
     }
 
     class ButtonClickListener implements ActionListener {
