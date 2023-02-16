@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Arrays;
 
 public class HtmlRead {
     JFrame frame;
@@ -66,14 +67,13 @@ public class HtmlRead {
                 //lines that have the letter x will be printed from index 50
                 // look into using .split commands
                 if (line.contains("href")) {
-                    s=line;
-                    char[] characters = s.toCharArray();
-                    String[] array =s.split(" ");
+                    String substring [] =line.split("href");
+                    System.out.println(Arrays.toString(substring));
                     StringBuilder builder = new StringBuilder();
-                    for(String s1: array){
-                    if(!("href".equals(s))){
-                    builder.append(s).append(" ");
-                      //  return builder.toString();
+                    for(String s1: substring){
+                    if(!("https//:".equals(substring))){
+                    builder.append(substring).append(" ");
+                      // return builder.toString();
                     }
 
                     }
