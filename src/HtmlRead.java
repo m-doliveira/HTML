@@ -65,10 +65,16 @@ public class HtmlRead {
 
             while ((line = reader.readLine()) != null) {
                 // look into using .split commands
-                if (line.contains("href=\"")  && line.contains(term.getText())) {
+             //   System.out.println(term.getText());
+                if (line.contains("href=")  && line.contains(term.getText())) {
+                   System.out.println(line);
+
                     int start = line.indexOf("href=\"") +6;
-                    int end =line.indexOf(50);
-                    String link = line.substring(start,end);
+                   line = line.substring(start);
+                  //  System.out.println(line);
+
+                    int end =line.indexOf("\"");
+                    String link = line.substring(0,end);
                    System.out.println(link);
                 }
                 // if (line.indexOf("x", 50) != -1) {
