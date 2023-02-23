@@ -57,11 +57,13 @@ public class HtmlRead {
         try {
             //System.out.println();
             //System.out.print("hello \n");
-            URL url = new URL("https://www.milton.edu/");
+            URL url = new URL(input.getText());
+
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(url.openStream())
             );
             String line;
+
 
             while ((line = reader.readLine()) != null) {
                 // look into using .split commands
@@ -69,13 +71,27 @@ public class HtmlRead {
                 if (line.contains("href=")  && line.contains(term.getText())) {
                    System.out.println(line);
 
-                    int start = line.indexOf("href=\"") +6;
+                    int start = line.indexOf("href=") +6;
                    line = line.substring(start);
                   //  System.out.println(line);
+                    int end;
+                    int n=-1;
+                    int end1 =line.indexOf("\"");
+                    int end2 =line.indexOf("\'");
+                    if (!(end1 == n)){
+                   if (end1<end2){
+                    end= end1;
+                       String link = line.substring(0,end);
+                       System.out.println(link);
+                       output.setText(link);
+                   }}
+                    else {
+                        end= end2;
+                        String link = line.substring(0,end);
+                        System.out.println(link);
+                       output.setText(link);
+                    }
 
-                    int end =line.indexOf("\"");
-                    String link = line.substring(0,end);
-                   System.out.println(link);
                 }
                 // if (line.indexOf("x", 50) != -1) {
                 // System.out.println(line);
