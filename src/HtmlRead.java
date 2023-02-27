@@ -69,10 +69,10 @@ public class HtmlRead {
                 // look into using .split commands
              //   System.out.println(term.getText());
                 if (line.contains("href=")  && line.contains(term.getText())) {
-                   System.out.println(line);
+                  // System.out.println(line);
 
                     int start = line.indexOf("href=") +6;
-                   line = line.substring(start);
+                  line = line.substring(start);
                   //  System.out.println(line);
                     int end;
                     int n=-1;
