@@ -67,32 +67,35 @@ public class HtmlRead {
 
             while ((line = reader.readLine()) != null) {
                 // look into using .split commands
-             //   System.out.println(term.getText());
-                if (line.contains("href=")  && line.contains(term.getText())) {
-                  // System.out.println(line);
+                //   System.out.println(term.getText());
+                if (line.contains("href=") && line.contains(term.getText())) {
+                    // System.out.println(line);
 
-                    int start = line.indexOf("href=") +6;
-                  line = line.substring(start);
-                  //  System.out.println(line);
+                    int start = line.indexOf("href=") + 6;
+                    line = line.substring(start);
+                      System.out.println("og "+line);
                     int end;
-                    int n=-1;
-                    int end1 =line.indexOf("\"");
-                    int end2 =line.indexOf("\'");
-                    if (!(end1 == n)){
-                   if (end1<end2){
-                    end= end1;
-                       String link = line.substring(0,end);
-                       System.out.println(link);
-                       output.setText(link);
-                   }}
-                    else {
-                        end= end2;
-                        String link = line.substring(0,end);
+                    int n = -1;
+                    int end1 = line.indexOf("\"");
+                    int end2 = line.indexOf("\'");
+                    System.out.println("end1 \': " + end1 + " end 2 \":  "+ end2);
+                    if (!(end1 == n)||!(end2 == n)) {
+
+                        if (end1 < end2) {
+                            end = end1;
+                            String link = line.substring(0, end);
+                            System.out.println(link);
+                            output.setText(link);
+                        }
+                    } else{
+                        end = end2;
+                        String link = line.substring(0, end);
                         System.out.println(link);
-                       output.setText(link);
+                        output.setText(link);
                     }
 
                 }
+
                 // if (line.indexOf("x", 50) != -1) {
                 // System.out.println(line);
                 // }
