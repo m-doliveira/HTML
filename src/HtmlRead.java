@@ -74,7 +74,6 @@ public class HtmlRead {
                     int start = line.indexOf("href=") + 6;
                     line = line.substring(start);
                     System.out.println("og "+line);
-                    //"og "+
                     int end;
                     int n = -1;
                     int end1 = line.indexOf("\"");
