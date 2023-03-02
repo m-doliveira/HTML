@@ -73,13 +73,14 @@ public class HtmlRead {
 
                     int start = line.indexOf("href=") + 6;
                     line = line.substring(start);
-                      System.out.println("og "+line);
+                    System.out.println("og "+line);
+                    //"og "+
                     int end;
                     int n = -1;
                     int end1 = line.indexOf("\"");
                     int end2 = line.indexOf("\'");
-                    System.out.println("end1 \': " + end1 + " end 2 \":  "+ end2);
-                    if (!(end1 == n)||!(end2 == n)) {
+                    System.out.println("end1 \": " + end1 + " end 2 \':  "+ end2);
+                    if (!(end1 == n)&&!(end2 == n)) {
 
                         if (end1 < end2) {
                             end = end1;
@@ -87,14 +88,28 @@ public class HtmlRead {
                             System.out.println(link);
                             output.setText(link);
                         }
-                    } else{
+
+                     else{
                         end = end2;
                         String link = line.substring(0, end);
                         System.out.println(link);
-                        output.setText(link);
-                    }
+                        output.append(link);
+                    }}
 
+                    if (end1==n){
+                        end=end2;
+                        String link = line.substring(0, end);
+                        System.out.println(link);
+                        output.append(link);
+                    }
+                    if (end2==n){
+                        end=end1;
+                        String link = line.substring(0, end);
+                        System.out.println(link);
+                        output.append(link);
+                    }
                 }
+
 
                 // if (line.indexOf("x", 50) != -1) {
                 // System.out.println(line);
