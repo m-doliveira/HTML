@@ -20,6 +20,8 @@ public class HtmlRead {
     JLabel midLabel;
     JLabel bottomLabel;
     JButton submit;
+    JScrollPane scroll;
+    
 
     public static void main(String[] args) {
         HtmlRead html = new HtmlRead();
@@ -41,14 +43,19 @@ public class HtmlRead {
         submit = new JButton("search");
         submit.setActionCommand("search");
         submit.addActionListener(new ButtonClickListener());
+        scroll =new JScrollPane(output);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         frame.add(topLabel);
         frame.add(input);
         frame.add(midLabel);
         frame.add(term);
         frame.add(submit);
         frame.add(bottomLabel);
-        frame.add(output);
+        //frame.add(output);
+        frame.add(scroll);
+
         frame.setVisible(true);
+
 
 
     }
@@ -85,27 +92,27 @@ public class HtmlRead {
                             end = end1;
                             String link = line.substring(0, end);
                             System.out.println(link);
-                            output.setText(link);
+                            output.setText(output.getText()+"\n"+link);
                         }
 
                      else{
                         end = end2;
                         String link = line.substring(0, end);
                         System.out.println(link);
-                        output.append(link);
+                        output.append("\n" +link);
                     }}
 
                     if (end1==n){
                         end=end2;
                         String link = line.substring(0, end);
                         System.out.println(link);
-                        output.append(link);
+                        output.append("\n"+link);
                     }
                     if (end2==n){
                         end=end1;
                         String link = line.substring(0, end);
                         System.out.println(link);
-                        output.append(link);
+                        output.append("\n"+link);
                     }
                 }
 
